@@ -120,7 +120,7 @@ class Portfolio3D {
             hackathons: { title: "Hackathons", body: "In 2026, I attended OxHack, where I built a basic chatroom bot based in Webex (a cisco messenger app), this bot had access to openweatherapi which allowed me to request information about the weather and humidity from within the chatroom by using specialised commands" },
             projects: { title: "Projects", body: "I have worked on various projects, including chat bots, simulated networks, and web apps." },
             roblox: { title: "Roblox", body: "I have worked on creating scripts in roblox (written in LUA), One of my projects called 'Steal an Actor' allows users to purchase characters in game with my fake currency and store their items and attempt to steal from others, this game was entirely made around a backend database which stores each players items and progress." },
-            contact: { title: "Contact", body: "My email: tomsaunders.http@gmail.com" }
+            contact: { title: "Contact", body: "My email: tomsaunders.http@gmail.com, My Linkedin is: <a href=\"https://www.linkedin.com/in/tom-saunders-152828317/\" target=\"_blank\">Click here</a>" }
         }; 
 
         menuItems.forEach(item => {
