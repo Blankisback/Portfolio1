@@ -145,6 +145,8 @@ class Portfolio3D {
             // Check current theme state to set the checkbox correctly
             const currentTheme = document.body.getAttribute('data-theme');
             const isLight = currentTheme === 'light';
+            const style = getComputedStyle(document.documentElement);
+            const currentGlassOpacity = style.getPropertyValue('--glass-opacity').trim() || '0.2';
 
             overlayTitle.textContent = "Settings";
             overlayBody.innerHTML = `
