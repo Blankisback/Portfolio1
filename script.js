@@ -155,6 +155,14 @@ class Portfolio3D {
                         <span class="slider"></span>
                     </label>
                 </div>
+                <div class="glass-slider-container">
+                    <div class="glass-slider-label">
+                        <span>Glass Appearance</span>
+                        <span>${Math.round(parseFloat(currentGlassOpacity) * 100)}%</span>
+                    </div>
+                    <input type="range" id="glass-opacity-slider" class="ios-range-slider"
+                           min="0.05" max="0.6" step="0.01" value="${currentGlassOpacity}">
+                </div>
             `;
             overlay.classList.remove('hidden');
             setTimeout(() => overlay.classList.add('active'), 10);
@@ -171,6 +179,16 @@ class Portfolio3D {
                         document.body.setAttribute('data-theme', theme);
                         // Update the screen DOM as well for redundancy
                         dom.setAttribute('data-theme', theme);
+                    });
+                }
+
+                const glassSlider = dom.querySelector('#glass-opacity-slider');
+                if (glassSlider) {
+                    glassSlider.addEventListener('input', (e) => {
+                        const val = e.target.value;
+                        document.documentElement.style.setProperty('--glass-opacity', val);
+                        const label = dom.querySelector('.glass-slider-label span:last-child');
+                        if (label) label.textContent = `${Math.round(parseFloat(val) * 100)}%`;
                     });
                 }
             }, 50);
