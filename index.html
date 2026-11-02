@@ -10,7 +10,7 @@
     <style>
         body {
             margin: 0;
-            background-color: var(--ios-bg) !important;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0f 100%) !important;
             color: var(--ios-text-main);
             font-family: 'Inter', sans-serif;
             overflow: hidden;
@@ -23,8 +23,9 @@
             width: 100vw;
             height: 100vh;
             z-index: 1;
-            background: var(--ios-bg);
+            background: transparent !important;
         }
+
 
 
         #css3d-container {
@@ -35,6 +36,7 @@
             height: 100vh;
             z-index: 2;
             pointer-events: none;
+            background: transparent !important;
         }
 
         .screen-content {
@@ -59,14 +61,16 @@
         }
     </style>
 </head>
-<body class="bg-white">
-
+<body class="bg-transparent">
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
     <div id="loader">Loading iPhone 16...</div>
     <div id="canvas-container"></div>
     <div id="css3d-container"></div>
 
     <div id="portfolio-template" style="display: none;">
         <div class="screen-content">
+            <div class="dynamic-island"></div>
             <div class="status-bar">
                 <span class="time">9:41</span>
                 <div class="status-icons">
@@ -146,6 +150,8 @@
                     <div id="overlay-body" class="overlay-body"></div>
                 </div>
             </div>
+            <div class="home-indicator"></div>
+        </div>
         </div>
     </div>
 

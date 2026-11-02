@@ -1,11 +1,11 @@
 /* iOS 18 High-Fidelity UI */
 :root {
-    --ios-bg: #000000;
+    --ios-bg: #333232;
     --ios-card-bg: rgba(28, 28, 30, 0.7);
     --ios-border: rgba(255, 255, 255, 0.1);
     --ios-text-main: #ffffff;
     --ios-text-sec: #8e8e93;
-    --ios-accent: #a855f7;
+    --ios-accent: #55d1f779;
     --ios-blur: blur(20px);
     --glass-opacity: 0.2;
 }
@@ -44,7 +44,26 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
+    border: 12px solid #000;
 }
+
+.dynamic-island {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 35px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 100;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+[data-theme='light'] .dynamic-island {
+    background: #1a1a1a;
+}   
 
 /* Hide scrollbar for a native feel */
 .screen-content::-webkit-scrollbar {
@@ -472,4 +491,21 @@ input:checked + .slider:before {
 
 .hidden {
     display: none;
+}
+
+.home-indicator {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 5px;
+    background: rgba(128, 128, 128, 0.5);
+    border-radius: 10px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+[data-theme='light'] .home-indicator {
+    background: rgba(0, 0, 0, 0.3);
 }

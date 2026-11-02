@@ -10,6 +10,15 @@ const SCREEN_HEIGHT = 844;
 
 class Portfolio3D {
     constructor() {
+        this.mouse = new THREE.Vector2();
+        this.targetRotation = new THREE.Euler();
+        this.currentRotation = new THREE.Euler();
+
+        window.addEventListener('mousemove', (e) => {
+            this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
         this.init();
         this.animate();
     }
@@ -212,6 +221,25 @@ class Portfolio3D {
 
     animate() {
         requestAnimationFrame(() => this.animate());
+
+        if (this.iphoneModel) {
+            // Subtle tilt based on mouse position
+            const targetX = this.mouse.y * 0.15; // Tilt left/right based on vertical mouse
+            const targetY = -this.mouse.x * 0.15; // Tilt up/down based on horizontal mouse
+
+            // Smoothly interpolate rotation (Lerp)
+            this.currentRotation.x += (targetX - this.currentRotation.x) * 0.05;
+            this.currentRotation.y += (targetY - this.currentRotation.y) * 0.05;
+
+            this.iphoneModel.rotation.x = this.currentRotation.x;
+            this.iphoneModel.rotation.y = this.currentRotation.y;
+
+            // Sync the CSS3D screen with the model's rotation
+            if (this.screenObject) {
+                this.screenObject.rotation.copy(this.iphoneModel.rotation);
+            }
+        }
+
         this.controls.update();
         this.renderer.render(this.scene, this.camera);
         this.cssRenderer.render(this.scene, this.camera);
