@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom Saunders | 3D Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background-color: var(--ios-bg) !important;
+            color: var(--ios-text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            background: var(--ios-bg);
+        }
+
+
+        #css3d-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .screen-content {
+            width: 390px;
+            height: 844px;
+            background: var(--ios-bg);
+            border: 8px solid #1a1a1a;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            padding: 65px 22px 30px 22px;
+            pointer-events: auto;
+            box-sizing: border-box;
+            box-shadow:
+                0 0 0 1px #333,
+                0 20px 50px rgba(0,0,0,0.3),
+                inset 0 0 10px rgba(255,255,255,0.1);
+        }
+
+        .screen-content::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <div id="loader">Loading iPhone 16...</div>
+    <div id="canvas-container"></div>
+    <div id="css3d-container"></div>
+
+    <div id="portfolio-template" style="display: none;">
+        <div class="screen-content">
+            <div class="status-bar">
+                <span class="time">9:41</span>
+                <div class="status-icons">
+                    <svg class="status-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2 17h2v-2H2v2zm0-4h2v-2H2v2zm0-4h2V7H2v2zm4 8h2v-2H6v2zm0-4h2v-2H6v2zm0-4h2V7H6v2zm4 8h2v-2h-2v2zm0-4h2v-2h-2v2zm0-4h2V7h-2v2zm4 8h2v-2h-2v2zm0-4h2v-2h-2v2zm0-4h2V7h-2v2z"/></svg>
+                    <div class="battery-container">
+                        <svg class="status-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M20 11v4"/></svg>
+                        <span class="battery-text">84%</span>
+                    </div>
+                </div>
+            </div>
+
+            <header class="header">
+                <p class="portfolio-label">Portfolio</p>
+                <h1 class="user-name">Tom Saunders</h1>
+            </header>
+
+            <div class="welcome-card">
+                <p class="welcome-text">Click on the apps below to see each part of my work</p>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-item" data-page="about">
+                    <div class="icon-wrapper">
+                        <svg class="purple-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </div>
+                    <span class="menu-title">About me</span>
+                </div>
+                <div class="menu-item" data-page="hackathons">
+                    <div class="icon-wrapper">
+                        <svg class="purple-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <span class="menu-title">Hackathons</span>
+                </div>
+                <div class="menu-item" data-page="projects">
+                    <div class="icon-wrapper">
+                        <svg class="purple-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                    </div>
+                    <span class="menu-title">Projects</span>
+                </div>
+                <div class="menu-item" data-page="roblox">
+                    <div class="icon-wrapper">
+                        <svg class="purple-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <span class="menu-title">Roblox</span>
+                </div>
+                <div class="menu-item" data-page="contact">
+                    <div class="icon-wrapper">
+                        <svg class="purple-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l8.5 5L21 8V18a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"></path></svg>
+                    </div>
+                    <span class="menu-title">Contact me</span>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+            </div>
+
+            <div class="settings-card">
+                <div class="settings-left">
+                    <div class="settings-icon-bg">
+                        <svg class="settings-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <div class="settings-text">
+                        <p class="settings-title">Settings</p>
+                        <p class="settings-subtitle">Make this space yours</p>
+                    </div>
+                </div>
+                <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </div>
+
+            <!-- OVERLAY MOVED INSIDE SCREEN -->
+            <div id="content-overlay" class="content-overlay hidden">
+                <div class="overlay-card">
+                    <button id="close-overlay" class="close-btn">&times;</button>
+                    <h2 id="overlay-title" class="overlay-title"></h2>
+                    <div id="overlay-body" class="overlay-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
