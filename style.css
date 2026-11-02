@@ -29,7 +29,8 @@
 }
 
 body {
-    background-color: var(--ios-bg) !important;
+    margin: 0;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0f 100%) !important;
     color: var(--ios-text-main);
 }
 
